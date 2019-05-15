@@ -1,7 +1,5 @@
 <?php
 
-
-	
 	/**
 	 * checkinModel
 	 *
@@ -46,12 +44,20 @@
 			if($custID = $this->checkCustomer($cname, $this->connect)) {
 				/* if customer exists */
 
+				$opID = $this->getOpID($opName, $this->connect);
+				$this->checkIntoRoom($custID, $roomNum, $opID, $date);
+				$this->setRoomStatus($roomNum, "checked-in", $this->connect);
 
 				$msg = 'Customer checked in !';
 				header("location:check_in_view?MESSAGE=$msg");
 
 			} 
 			else {
+				/* if customer does not exit */
+
+				//$this->addCustomer($cname, $custAdd, $custPhone, $this->connected);
+				//$custID = $this->checkCustomer($cname, $this->connect);
+
 				$msg = 'Customer does not exists !';
 				header("location:check_in_view?MESSAGE=$msg");
 			}
