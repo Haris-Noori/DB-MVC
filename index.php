@@ -1,6 +1,6 @@
 
 <?php
-
+	
 	// include "./routes/Routes.php";
 
 	require_once("./control/indexControl.php");
@@ -34,12 +34,12 @@
 		$adControl = new adminControl();
 		echo $adControl->view_AD_Login();
 	}
-	else if($currentUrl == "operator_login_try.php") {
+	else if($currentUrl == "operator_login_try") {
 		//echo "From index page".$_POST['txt_user']." - ".$_POST['txt_pass'];
 		$opControl = new operatorControl();
 		$opControl->Login();
 	}
-	else if($currentUrl == "opDash") {
+	else if($currentUrl == "opDash" || $currentUrl == "operator_dashboard") {
 		$opControl = new operatorControl();
 		$opControl->load_OP_Dash();
 	}
@@ -47,7 +47,7 @@
 		$cc = new checkinControl();
 		$cc->loadForm();
 	}
-	else if($currentUrl == "check_in_try.php") {
+	else if($currentUrl == "check_in_try") {
 		$cc = new checkinControl();
 		$cc->makeEntry();
 	}
@@ -55,6 +55,23 @@
 		$ac = new adminControl();
 		$ac->login();
 	}
+	else if($currentUrl == "booked_rooms") {
+		$opControl = new operatorControl();
+		$opControl->load_booked_rooms();
+	}
+	else if($currentUrl == "reserved_rooms") {
+		$opControl = new operatorControl();
+		$opControl->load_reserve_rooms();	
+	}
+	else if($currentUrl == "available_rooms") {
+		$opControl = new operatorControl();
+		$opControl->load_available_rooms();	
+	}
+	else if($currentUrl == "check_in_view") {
+		$opControl = new operatorControl();
+		$opControl->load_check_in();
+	}
+	
 	else {
 		echo "Invalid Route : Error 404 : Page not found.";
 	}

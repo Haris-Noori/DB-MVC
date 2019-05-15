@@ -3,17 +3,32 @@
 
 	
 	/**
+	 * checkinModel
+	 *
+	 * when a customer checkes in 
+	 * firstly we check if the customer is a new 
+	 * customer or an existing customer
 	 * 
+	 * if customer is existing then use CustomerID
+	 * to make entry into checked_in_table
+	 * if customer is new then firstly customer is 
+	 * added into customer table then an entry is made into
+	 * checked_in_room
+	 *
+	 * also status of that room in rooms table is set as checkedIn
+	 *
 	 */
 	class checkinModel
 	{
 		
 		public $checkinForm;
+		public $connect;
 
 		function __construct()
 		{
 			# code...
 			$this->checkinForm = "./views/check_in_view.php";
+			$this->initDB();
 		}
 
 
@@ -21,6 +36,29 @@
 		 *				Defining main Function
 		 *************************************************************/
 
+		function main($cname, $cnum, $custAdd, $roomNum, $date, $op ) {
+
+			/*
+			 * main function that makes the entry by filtering
+			 * through the argument.
+			 */
+
+			if($custID = $this->checkCustomer($cname, $this->connect)) {
+				/* if customer exists */
+
+
+				$msg = 'Customer checked in !';
+				header("location:check_in_view?MESSAGE=$msg");
+
+			} 
+			else {
+				$msg = 'Customer does not exists !';
+				header("location:check_in_view?MESSAGE=$msg");
+			}
+
+
+
+		}
 
 		function checkIntoRoom($custID, $roomID, $opID, $date ) {
 			/*
@@ -37,6 +75,17 @@
 
 		}
 
+		function initDB() {
+			
+			$server = "localhost";
+			$user = "root";
+			$pass = "";
+			$dbname = "hms_db";
+
+			$this->connect = new MySQLi($server, $user, $pass, $dbname);
+
+			
+		}
 
 		/**************************************************************
 	     *			    Defining Helper Functions

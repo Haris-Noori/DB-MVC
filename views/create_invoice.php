@@ -1,5 +1,5 @@
 <?php
-  session_start();
+    session_start();
 
 ?>
 
@@ -13,8 +13,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Operator - Rent Room</title>
+  <title>Operator - Generate Invoice</title>
 
+  <link rel="stylesheet" href="css/admin.css">
   <!-- Bootstrap core CSS -->
   <link href="bootstrap_4.2_css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -28,18 +29,18 @@
 
 </head>
 
-<body>
+<body>                      <!--   BODY BODY BODY    -->
 
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Operator Dashboard</div>
+      <div class="sidebar-heading"><a href="operator_dashboard.php">Operator Dashboard</a></div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Booked Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Reserved Rooms</a>
+        <a href="booked_rooms.php" class="list-group-item list-group-item-action bg-light" id="haver">Booked Rooms</a>
+        <a href="reserved_rooms.php" class="list-group-item list-group-item-action bg-light" id="haver">Reserved Rooms</a>
         <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Available Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Check In</a>
+        <a href="check_in_view.php" class="list-group-item list-group-item-action bg-light" id="haver">Check In</a>
         <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Check Out</a>
         <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Status</a>
       </div>
@@ -78,53 +79,63 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">Rent Room</h1>
-
+        
+      <h1 class="mt-4">  Generate Invoice  </h1>
         <br>
 
-        <!-- rent room code here -->
+        <!-- generate invoice code here -->
+        <div class="container">
 
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Room ID</th>
-              <th scope="col">Room Type</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th> 
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>25701</td>
-              <td>Single Bedroom</td>
-              <td>Available</td>
-              <td><button class="btn btn-success">Book</button></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>25702</td>
-              <td>Double Bedroom</td>
-              <td>Available</td>
-              <td><button class="btn btn-success">Book</button></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>25703</td>
-              <td>Single Bedroom</td>
-              <td>Available</td>
-              <td><button class="btn btn-success">Book</button></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>25704</td>
-              <td>Single Bedroom</td>
-              <td>Available</td>
-              <td><button class="btn btn-success">Book</button></td>
-            </tr>
-          </tbody>
-        </table>
+          
+
+            <div class="row justify-content-center">
+              <div class="col-sm-4">
+                <form method="post" action="#">
+                  
+                <div class="form-group">
+                    <input type="text" placeholder="Invoice ID" name="invoiceID">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" placeholder="Operator ID" name="operator_id">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" placeholder="Customer ID" name="customer_id">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" placeholder="Room ID" name="room_id">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="number" placeholder="Amount Charged" name="amount">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="date" placeholder="Generated Date" name="gen_date">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="number" placeholder="Checked In Amount" name="check_in">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="number" placeholder="Checked Out Amount" name="check_out">
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-block btn-success col-sm-8">Generate</button>
+                  </div>
+                    
+                    
+                </form>
+              </div>
+                
+            </div>
+        </div>
+        
+        
 
 
         <hr>

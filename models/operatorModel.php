@@ -1,7 +1,7 @@
 <?php
 	
 	// include "connect.php";
-
+	//session_start();
 	// $Connect = $con;
 	
 	/**
@@ -11,7 +11,11 @@
 	{
 		public $operatorLogin;
 		public $operatorDash;
+		public $bookedRoom;
+		public $resRoom;
 		public $connect;
+		public $availRoom;
+		public $checkin;
 		public $loggedin;
 		
 		function __construct()
@@ -20,6 +24,11 @@
 			$this->operatorLogin = "./views/operator_login.php";
 			$this->operatorDash = "./views/operator_dashboard.php";
 			//$this->connect = $Connect;
+			$this->bookedRoom = "./views/booked_rooms.php";
+			$this->resRoom = "./views/reserved_rooms.php";
+			$this->availRoom = "./views/available_rooms.php";
+			$this->checkin = "./views/check_in_view.php";
+			
 			$this->initDB();
 			$this->loggedin = true;
 		}

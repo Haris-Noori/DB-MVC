@@ -33,6 +33,22 @@
 			require_once($this->model->operatorDash);
 		}
 
+		function load_booked_rooms() {
+			require_once($this->model->bookedRoom);
+		}
+
+		function load_reserve_rooms() {
+			require_once($this->model->resRoom);
+		}
+
+		function load_available_rooms() {
+			require_once($this->model->availRoom);
+		}
+
+		function load_check_in() {
+			require_once($this->model->checkin);
+		}
+
 		function Login() {
 			//echo $_POST['txt_user']." - ".$_POST['txt_pass'];
 			$opName = $_POST['txt_user'];
@@ -55,6 +71,8 @@
 			 */
 			return $this->model->loggedin;
 		}
+
+
 
 	}
 

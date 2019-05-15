@@ -10,11 +10,6 @@
                 <h4 class="mx-auto">User</h4>
             </div>
 
-
-
-
-
-
         </div>
         <div class="list-group list-group-flush">
             <a href="views/dashboard.php" class="list-group-item  list-group-item-action bg-light">Dashboard</a>

@@ -1,6 +1,6 @@
 <?php
-  session_start();
-
+    session_start();
+    include "connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +13,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Operator - Rent Room</title>
+  <title>Operator - Available Rooms</title>
 
+  <link rel="stylesheet" href="css/admin.css">
   <!-- Bootstrap core CSS -->
   <link href="bootstrap_4.2_css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -28,18 +29,18 @@
 
 </head>
 
-<body>
+<body>                      <!--   BODY BODY BODY    -->
 
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Operator Dashboard</div>
+      <div class="sidebar-heading"><a href="operator_dashboard">Operator Dashboard</a></div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Booked Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Reserved Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Available Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Check In</a>
+        <a href="booked_rooms" class="list-group-item list-group-item-action bg-light" id="haver">Booked Rooms</a>
+        <a href="reserved_rooms" class="list-group-item list-group-item-action bg-light" id="haver">Reserved Rooms</a>
+        <a href="available_rooms" class="list-group-item list-group-item-action bg-light" id="haver">Available Rooms</a>
+        <a href="check_in_view" class="list-group-item list-group-item-action bg-light" id="haver">Check In</a>
         <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Check Out</a>
         <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Status</a>
       </div>
@@ -78,88 +79,46 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">Rent Room</h1>
+        
+      <h1 class="mt-4">  Available Rooms  </h1>
+        
+        <?php
 
-        <br>
+            $qry = " SELECT room_id,status,room_type FROM room INNER JOIN category ON room.cat_fk = category.cat_id  WHERE status = 'available' ";
 
-        <!-- rent room code here -->
+            $res = $con->query($qry);
+            $result = "";
 
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Room ID</th>
-              <th scope="col">Room Type</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th> 
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>25701</td>
-              <td>Single Bedroom</td>
-              <td>Available</td>
-              <td><button class="btn btn-success">Book</button></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>25702</td>
-              <td>Double Bedroom</td>
-              <td>Available</td>
-              <td><button class="btn btn-success">Book</button></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>25703</td>
-              <td>Single Bedroom</td>
-              <td>Available</td>
-              <td><button class="btn btn-success">Book</button></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>25704</td>
-              <td>Single Bedroom</td>
-              <td>Available</td>
-              <td><button class="btn btn-success">Book</button></td>
-            </tr>
-          </tbody>
-        </table>
+            if($res->num_rows > 0)
+            {
+                $result .= " <div class='container'> ";
+                $result .= " <table align='center' class='table table-bordered'> ";
+
+                $result .= " <tr> <th class='table-dark'>Room </th> <th class='table-dark'>Category</th> <th class='table-dark'>Status</th> <th class='table-dark'>Action</th> </tr> ";
+
+                while($row = $res->fetch_assoc())
+                {
+                    $result .= " <tr class='tblr'>
+                                <td> ".$row['room_id']." </td>
+                                <td> ".$row['room_type']." </td>
+                                <td> ".$row['status']." </td>  
+                                <td> ".'<a href="book_the_room.php" class="btn btn-success btn-block">Book</a>'." </td>          
+                    </tr> ";
+                }
+                $result .= " </table></div> ";
+
+            }
+            
+            echo $result;
+
+        ?>
+        
+        
+        
 
 
-        <hr>
-
-        <div class="container">
-          <!-- SLIDER  -->
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="img/parallax/1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="img/slide2.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="img/slide3.jpg" class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <!-- SLIDER END-->
-
-        </div>
+        
+        
 
         
         

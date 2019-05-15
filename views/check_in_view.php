@@ -23,14 +23,14 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><a href="operator_dashboard.php">Operator Dashboard</a></div>
+     <div class="sidebar-heading"><a href="operator_dashboard">Operator Dashboard</a></div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Booked Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Reserved Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Available Rooms</a>
-        <a href="check_in_view.php" class="list-group-item list-group-item-action bg-light">Check In</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Check Out</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <a href="booked_rooms" class="list-group-item list-group-item-action bg-light" id="haver">Booked Rooms</a>
+        <a href="reserved_rooms" class="list-group-item list-group-item-action bg-light" id="haver">Reserved Rooms</a>
+        <a href="available_rooms" class="list-group-item list-group-item-action bg-light" id="haver">Available Rooms</a>
+        <a href="check_in_view" class="list-group-item list-group-item-action bg-light" id="haver">Check In</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Check Out</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" id="haver">Status</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -53,7 +53,7 @@
             
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user"></i><?php echo " ".$_SESSION["user"]." "; ?>
+                <i class="fas fa-user"></i><?php echo $_SESSION["user"]; ?>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">My Profile</a>
@@ -75,7 +75,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-sm-4">
-				<form method="post" action="check_in_try.php">
+				<form method="post" action="check_in_try">
 					<div class="form-group row">
 						<input type="text" name="customerName" placeholder="Customer Name">
 					</div>
@@ -99,7 +99,15 @@
 					<div class="form-group row col-sm-8">
 						<button class="btn btn-success btn-block" name="checkIn" value="Check In"> Check In </button>
 					</div>
+          <div>
+            <?php 
+              if(isset($_GET['MESSAGE'])) {
+                echo $_GET['MESSAGE'];
+              }
+            ?>
+          </div>
 				</form>
+
 			</div>
 		</div>
 	</div>

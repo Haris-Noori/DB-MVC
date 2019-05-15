@@ -37,9 +37,9 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading"> <a href="operator_dashboard.php">Operator Dashboard</a> </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Booked Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Reserved Rooms</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Available Rooms</a>
+        <a href="booked_rooms" class="list-group-item list-group-item-action bg-light">Booked Rooms</a>
+        <a href="reserved_rooms" class="list-group-item list-group-item-action bg-light">Reserved Rooms</a>
+        <a href="available_rooms" class="list-group-item list-group-item-action bg-light">Available Rooms</a>
         <a href="check_in_view.php" class="list-group-item list-group-item-action bg-light">Check In</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Check Out</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>

@@ -1,6 +1,6 @@
 <?php
 	
-	//session_start();
+	session_start();
 
 	require_once("./models/checkinModel.php");
 	
@@ -49,6 +49,8 @@
 
 			echo $custName." - ".$custNum." - ".$custAdd." - ".$roomNum." - ".$date ;
 			//echo checkCustomer($custName, $con);
+
+			$this->model->main($custName, $custNum, $custAdd, $roomNum, $date, $op);
 		}
 
 
