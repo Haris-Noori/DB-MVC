@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin-Panel | Login</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style2.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/addoperator.css">
+
+</head>
+
+<body>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
@@ -55,7 +72,10 @@
         </nav>
         <div class="content">
             <?php
-                echo $this->addOperator();
+                require_once("control/adminControl.php");
+                $ac = new adminControl;
+
+                $ac->loadOP();
             
             ?>
         </div>

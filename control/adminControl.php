@@ -23,19 +23,25 @@
 		function view_AD_Dash() {
 			require_once($this->model->Dash);
 		}
-
+		function loadOP() {
+			require_once($this->model->addop);
+		}
 		function login() {
 
 			$user = $_POST['adminName'];
 			$pass = $_POST['adminPass'];
 
-			echo $user." - ".$pass;
+			//echo $user." - ".$pass;
 
-			// if(checkValid($user, $pass)) {
-
-			// } else {
+			if($this->model->checkValid($user, $pass) == true) {
+				header("location:adminDash");
+				//echo "loggedin";
+			}
+			else {
 				
-			// }
+				header("location:admin_login");
+				//echo "logged failed";
+			}
 
 		}
 	}

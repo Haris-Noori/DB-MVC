@@ -7,6 +7,7 @@
 	require_once("./control/operatorController.php");
 	require_once("./control/adminControl.php");
 	require_once("./control/checkinControl.php");
+	require_once("./control/addOperatorControl.php");
 
 	// function _autoload($class_name) {
 	// 	require_once "./classes".$class_name.".php";
@@ -55,6 +56,7 @@
 		$ac = new adminControl();
 		$ac->login();
 	}
+
 	else if($currentUrl == "booked_rooms") {
 		$opControl = new operatorControl();
 		$opControl->load_booked_rooms();
@@ -72,6 +74,15 @@
 		$opControl->load_check_in();
 	}
 	
+	else if($currentUrl == "adminDash"){
+		$ac = new adminControl();
+		$ac->view_AD_Dash();
+	}
+	else if($currentUrl == "addOp"){
+		$ac = new addOperatorControl();
+		$ac->getData();
+	}
+
 	else {
 		echo "Invalid Route : Error 404 : Page not found.";
 	}
