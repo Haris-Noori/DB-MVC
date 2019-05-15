@@ -4,7 +4,7 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <div class="signup-form">
-                <form action="" method="post">
+                <form action="addOp" method="post">
                     <h2>Add Operator</h2>
 
                     <div class="form-group">

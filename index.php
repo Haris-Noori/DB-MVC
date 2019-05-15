@@ -7,6 +7,7 @@
 	require_once("./control/operatorController.php");
 	require_once("./control/adminControl.php");
 	require_once("./control/checkinControl.php");
+	require_once("./control/addOperatorControl.php");
 
 	// function _autoload($class_name) {
 	// 	require_once "./classes".$class_name.".php";
@@ -54,6 +55,14 @@
 	else if($currentUrl == "admin_login_try"){
 		$ac = new adminControl();
 		$ac->login();
+	}
+	else if($currentUrl == "adminDash"){
+		$ac = new adminControl();
+		$ac->view_AD_Dash();
+	}
+	else if($currentUrl == "addOp"){
+		$ac = new addOperatorControl();
+		$ac->getData();
 	}
 	else {
 		echo "Invalid Route : Error 404 : Page not found.";
